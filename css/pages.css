@@ -185,8 +185,10 @@ h1, h2, h3 { margin: 0; }
   margin: 0 0 24px;
   max-width: 26ch;
 }
-.home-about__lead { font-family: var(--font-body); font-size: 17px; line-height: 1.6; font-weight: 500; color: var(--ink-900); margin: 0; max-width: 65ch; }
-.home-about__body { font-size: 16px; line-height: 1.75; color: var(--ink-700); margin: 20px 0 0; max-width: 65ch; }
+/* Lead and body share the same pixel measure so their right edges line up
+   (matching ch values would differ because the lead uses a larger font). */
+.home-about__lead { font-family: var(--font-body); font-size: 17px; line-height: 1.6; font-weight: 500; color: var(--ink-900); margin: 0; max-width: 600px; }
+.home-about__body { font-size: 16px; line-height: 1.75; color: var(--ink-700); margin: 20px 0 0; max-width: 600px; }
 .prior-exp { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--ink-200); display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .prior-exp__label { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--forest-700); }
 .prior-exp__roles { font-family: var(--font-body); font-size: 13px; line-height: 1.6; color: var(--ink-700); }
@@ -252,9 +254,19 @@ h1, h2, h3 { margin: 0; }
    pace matched to the "Trusted by" logo marquee. */
 .marquee-track { display: flex; width: max-content; gap: 24px; animation: logoMarquee 72s linear infinite; animation-play-state: paused; }
 .marquee-mask:hover .marquee-track { animation-play-state: running; }
-/* Touch devices have no hover: keep the strip moving so projects reveal on scroll. */
+/* Touch devices have no hover: turn the strip into a finger-swipeable row that
+   only moves when the user scrolls it, rather than auto-animating. */
 @media (hover: none) {
-  .marquee-track { animation-play-state: running; }
+  .marquee-mask {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 24px;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .marquee-track { animation: none; }
+  .work-card { scroll-snap-align: start; }
 }
 .work-card { text-decoration: none; display: block; flex: 0 0 300px; }
 .work-card figure { margin: 0; overflow: hidden; border-radius: 2px; }

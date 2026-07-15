@@ -38,8 +38,11 @@
           <h3 class="work-card__title">${esc(b.title)}</h3>
         </a>`)
       .join('');
-    // Duplicate the track so the -50% translate loops seamlessly.
-    workTrack.innerHTML = cards + cards;
+    // Desktop auto-marquee needs a duplicated track so the -50% translate loops
+    // seamlessly. Touch devices swipe through the strip manually, so a single
+    // set of cards is shown (no repeats).
+    const autoScrolls = window.matchMedia('(hover: hover)').matches;
+    workTrack.innerHTML = autoScrolls ? cards + cards : cards;
   }
 
   const trustedTrack = document.getElementById('trusted-track');
