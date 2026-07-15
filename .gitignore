@@ -1,0 +1,11 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Dependencies (none required, but just in case)
+node_modules/
+
+# Local preview build artifacts (regenerable, large)
+preview-site.html
+preview-mobile.html

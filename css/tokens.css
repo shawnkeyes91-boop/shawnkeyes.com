@@ -1,0 +1,78 @@
+/* ============================================================
+   Keyes Advisory — design tokens
+   Ported from the Claude Design export (_ds/colors_and_type.css).
+   ============================================================ */
+
+/* Self-hosted fonts — no third-party request, no render-blocking @import.
+   Brand spec: Display = Sentinel (licensed), Body = Inter.
+   Substitution: Sentinel -> Source Serif 4. Swap in licensed Sentinel for production. */
+@font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('../assets/fonts/Inter-400.woff2') format('woff2'); }
+@font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('../assets/fonts/Inter-500.woff2') format('woff2'); }
+@font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('../assets/fonts/Inter-600.woff2') format('woff2'); }
+@font-face { font-family:'Inter'; font-style:normal; font-weight:700; font-display:swap; src:url('../assets/fonts/Inter-700.woff2') format('woff2'); }
+@font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:400; font-display:swap; src:url('../assets/fonts/SourceSerif4-400.woff2') format('woff2'); }
+@font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:600; font-display:swap; src:url('../assets/fonts/SourceSerif4-600.woff2') format('woff2'); }
+
+:root {
+  /* Color — forest scale */
+  --forest-900: #003b27;
+  --forest-700: #006241;
+  --forest-500: #146f4d;
+  --forest-400: #569c76;
+  --forest-300: #a8c5b1;
+  --forest-200: #e6f0ea;
+  --forest-100: #f3f5f3;
+
+  /* Color — neutrals */
+  --ink-900: #0e1411;
+  --ink-700: #2a332e;
+  --ink-500: #4f5a54;
+  --ink-300: #8b958f;
+  --ink-200: #cfd5d1;
+  --ink-100: #e8ebe9;
+  --paper: #ffffff;
+  --paper-warm: #fbfaf6;
+
+  /* Color — semantic */
+  --fg-1: var(--ink-900);
+  --fg-2: var(--ink-700);
+  --fg-3: var(--ink-500);
+  --bg-1: var(--paper);
+  --bg-2: var(--paper-warm);
+
+  /* Type — families
+     Brand spec: Display = Sentinel (licensed), Body = Inter.
+     Substitution: Sentinel -> Source Serif 4 (Google Fonts). Swap in the
+     licensed Sentinel webfont for production if/when it's available. */
+  --font-display: 'Source Serif 4', 'Sentinel', 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
+
+  /* Motion */
+  --dur-1: 160ms;
+  --dur-3: 480ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Layout */
+  --max-w: 1240px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--fg-1);
+  background: var(--paper-warm);
+}
+
+a { color: var(--forest-700); }
+a:hover { color: var(--forest-900); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

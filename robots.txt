@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /preview-site.html
+Disallow: /contact-preview.html
+
+Sitemap: https://shawnkeyes.com/sitemap.xml
