@@ -252,6 +252,10 @@ h1, h2, h3 { margin: 0; }
    pace matched to the "Trusted by" logo marquee. */
 .marquee-track { display: flex; width: max-content; gap: 24px; animation: logoMarquee 72s linear infinite; animation-play-state: paused; }
 .marquee-mask:hover .marquee-track { animation-play-state: running; }
+/* Touch devices have no hover: keep the strip moving so projects reveal on scroll. */
+@media (hover: none) {
+  .marquee-track { animation-play-state: running; }
+}
 .work-card { text-decoration: none; display: block; flex: 0 0 300px; }
 .work-card figure { margin: 0; overflow: hidden; border-radius: 2px; }
 .work-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
@@ -348,9 +352,9 @@ h1, h2, h3 { margin: 0; }
 .acc__item:not(.is-open) .acc__panel { display: none; }
 .acc__item:not(.is-open) .acc__sign-minus { display: none; }
 .acc__item.is-open .acc__sign-plus { display: none; }
-.acc__summary { font-family: var(--font-display); font-style: italic; font-size: 15px; line-height: 1.5; color: var(--ink-700); margin: 0 0 14px; max-width: 70ch; }
-.acc__bullets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.acc__bullets li { position: relative; padding-left: 18px; font-size: 14px; line-height: 1.55; color: var(--ink-700); }
+.acc__summary { font-family: var(--font-display); font-style: italic; font-size: 16px; line-height: 1.55; color: var(--ink-700); margin: 0 0 14px; max-width: 70ch; }
+.acc__bullets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.acc__bullets li { position: relative; padding-left: 18px; font-size: 16px; line-height: 1.6; color: var(--ink-700); }
 .acc__bullets li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px; border-radius: 50%; background: var(--forest-400); }
 .career__photo { width: 100%; aspect-ratio: 4/3; border-radius: 2px; overflow: hidden; }
 .career__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -432,7 +436,7 @@ h1, h2, h3 { margin: 0; }
   .svc-grid { grid-template-columns: repeat(2, 1fr); }
 
   .link-underline--dsk { display: none; }
-  .link-underline--mob { display: inline-flex; margin-top: 8px; }
+  .link-underline--mob { display: inline-flex; margin-top: 32px; }
 }
 
 @media (max-width: 620px) {
@@ -458,8 +462,8 @@ h1, h2, h3 { margin: 0; }
   .img-hero--home { min-height: calc(100vh - 60px); min-height: calc(100svh - 60px); }
 
   /* Focus areas: stack cleanly, swap stray left-borders for top rules */
-  .focus__list { flex-direction: column; gap: 0; }
-  .focus__item { padding: 11px 0; }
+  .focus__list { flex-direction: column; gap: 0; align-items: stretch; }
+  .focus__item { padding: 11px 0; text-align: center; }
   .focus__item + .focus__item { border-left: none; border-top: 1px solid rgba(255,255,255,0.22); }
 
   /* Stat pair: drop the vertical divider once it wraps */
@@ -476,6 +480,20 @@ h1, h2, h3 { margin: 0; }
   .pf-hero__intro p { max-width: none; }
   .pf-hero__row { flex-wrap: wrap; gap: 2px 12px; padding: 8px 0; }
   .pf-hero__row .k { width: 100%; white-space: normal; }
+
+  /* Work cards: single column so images/text never run past the right edge,
+     with equal gutters left and right from the .wrap padding */
+  .pf-grid { grid-template-columns: 1fr; gap: 44px; }
+  .pf-card img { aspect-ratio: 3/2; }
+
+  /* Services: icon sits above the title on each card */
+  .svc-detail-card { padding: 32px 24px; }
+  .svc-detail-card__head { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+  /* About: headshot + name/credentials/links fit within the first screen */
+  .bio__grid { padding-top: 40px; padding-bottom: 48px; gap: 22px; }
+  .bio__portrait img { height: 44vh; width: auto; max-width: 100%; }
+  .bio__name { margin-top: 16px; }
 
   /* Media/speaking: swipeable strip instead of three stacked photos */
   .media__photos { display: flex; grid-template-columns: none; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }

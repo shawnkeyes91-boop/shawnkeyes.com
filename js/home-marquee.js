@@ -2,15 +2,15 @@
   // Selected-work marquee: mirrors the Portfolio "Construction Projects" list.
   const buildings = [
     { photo: 'assets/photos/p-halsa.jpg', alt: "Hälsa, Ontario's tallest mass timber residential building, Toronto", meta: 'Intelligent City', title: 'Hälsa, 230 Royal York Rd' },
-    { photo: 'assets/photos/p-clg.jpg', alt: 'Aerial view of the Chief Leonard George Building, Vancouver', meta: 'Intelligent City', title: 'Chief Leonard George Building' },
     { photo: 'assets/photos/p-coronation.jpg', alt: 'Coronation Park Sports and Recreation Centre at dusk, Edmonton', meta: 'Fast + Epp', title: 'Coronation Park Sports and Recreation Centre' },
-    { photo: 'assets/photos/p-portwood.jpg', alt: 'Aerial view of the Portwood master-planned community, Port Moody', meta: 'Fast + Epp', title: 'Portwood — Phase I' },
-    { photo: 'assets/photos/p-saddlelake.jpg', alt: 'Timber-framed learning commons interior at Saddle Lake Onchaminahos Elementary School', meta: 'Fast + Epp', title: 'Saddle Lake Onchaminahos School' },
     { photo: 'assets/photos/p-metis-int.jpg', alt: 'Heavy timber interior of the Métis Crossing Cultural Gathering Centre', meta: 'Fast + Epp', title: 'Métis Crossing Cultural Gathering Centre' },
+    { photo: 'assets/photos/p-saddlelake.jpg', alt: 'Timber-framed learning commons interior at Saddle Lake Onchaminahos Elementary School', meta: 'Fast + Epp', title: 'Saddle Lake Onchaminahos School' },
+    { photo: 'assets/photos/p-clg.jpg', alt: 'Aerial view of the Chief Leonard George Building, Vancouver', meta: 'Intelligent City', title: 'Chief Leonard George Building' },
+    { photo: 'assets/photos/p-portwood.jpg', alt: 'Aerial view of the Portwood master-planned community, Port Moody', meta: 'Fast + Epp', title: 'Portwood — Phase I' },
     { photo: 'assets/photos/p-fortedmonton.png', alt: 'Fort Edmonton Park entrance pavilion', meta: 'Fast + Epp', title: 'Fort Edmonton Entrance Pavilion' },
     { photo: 'assets/photos/p-southhaven.jpg', alt: 'South Haven Centre for Remembrance in winter', meta: 'Fast + Epp', title: 'South Haven Centre for Remembrance' },
-    { photo: 'assets/photos/p-saltriver.jpg', alt: 'Timber boardroom at the Salt River First Nation community facility', meta: 'Fast + Epp', title: 'Salt River First Nation Community Facility' },
     { photo: 'assets/photos/p-kashgek.jpg', alt: "Aerial view of the Kashgêk' Building for Kwanlin Dün First Nation, Whitehorse, Yukon", meta: 'Fast + Epp', title: 'Kashgêk’ Building', objPos: 'center 78%' },
+    { photo: 'assets/photos/p-saltriver.jpg', alt: 'Timber boardroom at the Salt River First Nation community facility', meta: 'Fast + Epp', title: 'Salt River First Nation Community Facility' },
     { photo: 'assets/photos/p-valleyline.jpg', alt: 'Rendering of an elevated mass timber station on the Edmonton Valley Line West LRT', meta: 'Fast + Epp', title: 'Edmonton Valley Line West LRT' },
   ];
 
