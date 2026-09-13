@@ -21,7 +21,7 @@
 
 /* ---------- Insights masthead ---------- */
 .ins-masthead {
-  background: var(--forest-900);
+  background: var(--forest-700);
   border-bottom: 1px solid rgba(255,255,255,0.1);
   position: relative;
   overflow: hidden;
