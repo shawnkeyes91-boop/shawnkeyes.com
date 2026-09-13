@@ -69,6 +69,22 @@ h1, h2, h3 { margin: 0; }
 }
 .arrow-link:hover { color: var(--forest-900); }
 
+/* Single style for every secondary action (All services, Full portfolio,
+   Full executive profile) so they read as one control, not three. */
+.btn-line {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.01em; text-decoration: none; white-space: nowrap;
+  color: var(--forest-700); background: transparent;
+  border: 1.5px solid var(--forest-700); border-radius: 999px;
+  padding: 11px 24px; cursor: pointer;
+  transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease), gap var(--dur-1) var(--ease);
+}
+.btn-line:hover { background: var(--forest-700); color: #fff; gap: 13px; }
+.btn-line--light { color: #fff; border-color: rgba(255,255,255,0.55); }
+.btn-line--light:hover { background: #fff; color: var(--forest-900); border-color: #fff; }
+.btn-line--mob { display: none; margin-top: 32px; }
+
 /* ---------- Image hero (full-bleed) ---------- */
 .img-hero {
   position: relative;
@@ -104,6 +120,9 @@ h1, h2, h3 { margin: 0; }
   text-shadow: 0 2px 24px rgba(0,0,0,0.35);
 }
 .img-hero__title .accent { color: var(--forest-300); }
+/* Home headline reads as a single line on desktop; wraps naturally below. */
+.img-hero__title--oneline { max-width: none; font-size: clamp(30px, 5.2vw, 66px); }
+@media (min-width: 920px) { .img-hero__title--oneline { white-space: nowrap; } }
 .img-hero__lede {
   font-size: 18px;
   line-height: 1.55;
@@ -250,50 +269,27 @@ h1, h2, h3 { margin: 0; }
   max-width: 64ch;
 }
 
-/* ---------- Who I work with (Home) ---------- */
-.audience { margin-top: 72px; padding-top: 56px; border-top: 1px solid var(--ink-200); }
-.audience__head { margin-bottom: 32px; }
-.audience__head .svc-head__h2 { margin-top: 12px; }
-.audience__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
-.aud-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background: var(--forest-900);
-  border-radius: 2px;
-  padding: 34px 30px 32px;
-  overflow: hidden;
-  box-shadow: 0 12px 32px rgba(14,20,17,0.14);
-  transition: transform 260ms var(--ease), box-shadow 260ms var(--ease);
+/* ---------- Who I work with (Home) — terse, names only ---------- */
+.clients { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--ink-200); }
+.clients__label {
+  display: block; font-family: var(--font-body);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--forest-700); margin-bottom: 22px;
 }
-.aud-card::after {
-  content: "";
-  position: absolute; left: 0; right: 0; top: 0; height: 3px;
-  background: var(--forest-400);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 320ms var(--ease);
+.clients__row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.client {
+  display: flex; align-items: center; gap: 16px;
+  background: #fff; border: 1px solid var(--ink-100);
+  border-left: 3px solid var(--forest-400);
+  border-radius: 2px; padding: 20px 22px;
+  transition: border-left-color var(--dur-1) var(--ease);
 }
-.aud-card:hover { transform: translateY(-4px); box-shadow: 0 22px 46px rgba(14,20,17,0.22); }
-.aud-card:hover::after { transform: scaleX(1); }
-.aud-card__num {
-  font-family: var(--font-display);
-  font-size: 13px; font-weight: 600; letter-spacing: 0.18em;
-  color: var(--forest-400);
-}
-.aud-card__icon {
-  width: 46px; height: 46px; margin: 20px 0 22px;
-  color: var(--forest-300);
-}
-.aud-card__icon svg { width: 100%; height: 100%; display: block; }
-.aud-card__title {
-  font-family: var(--font-display);
-  font-size: 23px; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em;
-  color: #fff; margin: 0 0 14px;
-}
-.aud-card__body {
-  font-size: 15px; line-height: 1.65;
-  color: rgba(255,255,255,0.78);
-  margin: auto 0 0;
+.client:hover { border-left-color: var(--forest-700); }
+.client__icon { flex: 0 0 auto; width: 30px; height: 30px; color: var(--forest-700); }
+.client__icon svg { width: 100%; height: 100%; display: block; }
+.client__name {
+  font-family: var(--font-display); font-size: 18px; font-weight: 600;
+  line-height: 1.25; letter-spacing: -0.01em; color: var(--ink-900);
 }
 
 /* ---------- The edge (Home) ---------- */
@@ -314,7 +310,7 @@ h1, h2, h3 { margin: 0; }
 }
 .edge__grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 40px; margin-top: 56px;
+  gap: 40px; margin-top: 48px;
 }
 .edge-item__rule { display: block; width: 40px; height: 2px; background: var(--forest-300); margin-bottom: 20px; }
 .edge-item__title {
@@ -324,7 +320,7 @@ h1, h2, h3 { margin: 0; }
 }
 .edge-item__body { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; }
 .edge__foot {
-  margin-top: 56px; padding-top: 32px;
+  margin-top: 48px; padding-top: 30px;
   border-top: 1px solid rgba(255,255,255,0.2);
   display: flex; align-items: center; justify-content: space-between;
   gap: 24px; flex-wrap: wrap;
@@ -486,8 +482,7 @@ h1, h2, h3 { margin: 0; }
 .acc__head { display: grid; grid-template-columns: 1fr auto; gap: 8px 20px; align-items: baseline; flex: 1 1 auto; min-width: 0; }
 .acc__org { display: block; font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--ink-900); }
 .acc__role { display: block; font-family: var(--font-body); font-size: 13px; font-weight: 600; line-height: 1.4; color: var(--forest-700); margin-top: 5px; }
-.acc__role--dual { font-weight: 500; color: var(--ink-500); margin-top: 2px; }
-.acc__role--dual::before { content: "+ "; color: var(--forest-400); font-weight: 700; }
+.acc__orgsep { color: var(--forest-400); font-weight: 400; }
 .acc__dates { font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--forest-700); }
 .acc__sign { flex: 0 0 auto; font-size: 22px; line-height: 1; color: var(--forest-700); width: 20px; text-align: center; }
 .acc__panel { padding: 0 0 26px; }
@@ -528,6 +523,11 @@ h1, h2, h3 { margin: 0; }
 .linklist li .pub { font-size: 12px; color: var(--ink-500); margin-bottom: 3px; }
 .linklist li a { font-size: 14px; line-height: 1.45; color: var(--ink-900); text-decoration: none; }
 .linklist li a:hover { color: var(--forest-700); }
+.linklist li a { display: inline-flex; align-items: baseline; gap: 7px; }
+/* Shared affordance: anything that leaves the page is marked. */
+.ext-mark { display: inline-flex; flex: 0 0 auto; width: 11px; height: 11px; color: var(--forest-400); transition: color var(--dur-1) var(--ease); }
+.ext-mark svg { width: 100%; height: 100%; display: block; }
+.linklist li a:hover .ext-mark, .talks li a:hover .ext-mark { color: var(--forest-700); }
 
 /* ============================================================
    Portfolio page
@@ -557,7 +557,7 @@ h1, h2, h3 { margin: 0; }
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 640ms var(--ease);
+  transition: transform 1100ms var(--ease);
 }
 .pf-flip:hover .pf-flip__inner,
 .pf-flip:focus-visible .pf-flip__inner,
@@ -573,19 +573,6 @@ h1, h2, h3 { margin: 0; }
 }
 .pf-flip__face--front { margin: 0; }
 .pf-flip__face--front img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; display: block; }
-/* Hover affordance: a quiet corner marker on the unflipped face. */
-.pf-flip__face--front::after {
-  content: "+";
-  position: absolute; right: 12px; bottom: 12px;
-  width: 28px; height: 28px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-body); font-size: 17px; font-weight: 500; line-height: 1;
-  color: #fff; background: rgba(0,59,39,0.82);
-  border-radius: 50%;
-  transition: opacity var(--dur-1) var(--ease);
-}
-.pf-flip:hover .pf-flip__face--front::after { opacity: 0; }
-
 .pf-flip__face--back {
   transform: rotateY(180deg);
   background: var(--forest-900);
@@ -612,7 +599,6 @@ h1, h2, h3 { margin: 0; }
   .pf-flip__inner { transform: none !important; transform-style: flat; }
   .pf-flip__face { position: static; backface-visibility: visible; transform: none; }
   .pf-flip__face--front img { aspect-ratio: 3/2; }
-  .pf-flip__face--front::after { display: none; }
   .pf-flip__face--back {
     background: transparent;
     padding: 0;
@@ -653,6 +639,7 @@ h1, h2, h3 { margin: 0; }
 /* Home "About Shawn" profile link: sits under the portrait on desktop, moves to
    the end of the section (just before Services) on stacked/mobile layouts. */
 .link-underline--mob { display: none; }
+.btn-line--dsk { margin-top: 20px; }
 
 @media (max-width: 900px) {
   .home-about__grid,
@@ -668,16 +655,16 @@ h1, h2, h3 { margin: 0; }
   .expertise__grid { grid-template-columns: 1fr; }
   .exp-card:nth-child(odd) { border-right: none; padding-right: 0; }
   .exp-card:nth-child(even) { padding-left: 0; }
-  .audience__grid { grid-template-columns: 1fr; }
+  .clients__row { grid-template-columns: 1fr; }
   .edge__grid { grid-template-columns: 1fr; gap: 32px; }
 
-  .link-underline--dsk { display: none; }
-  .link-underline--mob { display: inline-flex; margin-top: 32px; }
+  .link-underline--dsk, .btn-line--dsk { display: none; }
+  .link-underline--mob, .btn-line--mob { display: inline-flex; margin-top: 32px; }
 }
 
 @media (max-width: 620px) {
   .svc-grid { grid-template-columns: 1fr; }
-  .audience { margin-top: 48px; padding-top: 40px; }
+  .clients { margin-top: 40px; padding-top: 28px; }
   .edge__foot { flex-direction: column; align-items: flex-start; }
   .edge__foot .btn { width: 100%; justify-content: center; }
 
@@ -691,7 +678,7 @@ h1, h2, h3 { margin: 0; }
   .exp-card { padding: 26px 0; }
   .edge__lede, .svc-head__lede { font-size: 16px; }
   .edge__kicker { font-size: 18px; }
-  .aud-card__title { font-size: 20px; }
+  .client__name { font-size: 17px; }
   .svc-detail-card__title, .engage-card__title { font-size: 22px; }
   .svc-card__title, .pf-card__title { font-size: 20px; }
   .portrait-meta__name { font-size: 26px; }

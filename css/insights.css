@@ -195,6 +195,7 @@
 }
 .art-head__h1 .accent { color: var(--forest-300); }
 .art-head__standfirst {
+  /* Header now ends on the standfirst; byline moved to the article foot. */
   font-family: var(--font-display); font-style: italic;
   font-size: clamp(18px, 2.2vw, 21px); line-height: 1.5;
   color: rgba(255,255,255,0.84); margin: 22px 0 0; max-width: 56ch;
@@ -406,4 +407,25 @@
   .art-endnote { flex-direction: column; gap: 18px; }
   .art-endnote__actions { width: 100%; }
   .art-endnote__actions .btn { width: 100%; justify-content: center; }
+}
+
+/* ---------- Byline, now closing the article rather than opening it ---------- */
+.art-byline--foot {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--ink-200);
+}
+.art-byline--foot .art-byline__name { color: var(--ink-900); }
+.art-byline--foot .art-byline__role { color: var(--ink-500); }
+.art-byline--foot .art-byline__share {
+  color: var(--forest-700);
+  border-color: var(--forest-700);
+}
+.art-byline--foot .art-byline__share:hover {
+  background: var(--forest-700);
+  border-color: var(--forest-700);
+  color: #fff;
+}
+@media (max-width: 620px) {
+  .art-byline--foot { margin-top: 36px; }
 }
