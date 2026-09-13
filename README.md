@@ -14,13 +14,17 @@ index.html          Home
 about.html          About Shawn Keyes
 services.html       Services
 portfolio.html      Work
+insights.html       Insights index (article cards + subscribe)
+insights/           One HTML file per article
 contact.html        Contact
 404.html            Not-found page
 robots.txt          Crawl rules
 sitemap.xml         Sitemap
-css/                tokens.css (design system), site.css (nav/footer/contact), pages.css
+css/                tokens.css (design system), site.css (nav/footer/contact/forms),
+                    pages.css, insights.css
 js/                 nav-toggle, home-marquee, about-accordion, portfolio-more, contact-form
-assets/             fonts (self-hosted woff2), photos, org logos, favicon, og-cover, résumé, documents
+assets/             fonts (self-hosted woff2), photos, org logos, favicon, og-cover, résumé,
+                    documents, insights/ (article artwork — see assets/insights/README.md)
 ```
 
 ## Local preview
@@ -49,5 +53,19 @@ Canonical/Open-Graph URLs are set to `https://shawnkeyes.com/`.
   Sentinel display face). Swap in licensed Sentinel for production if desired.
 - Analytics: a Plausible snippet is included (`data-domain="shawnkeyes.com"`);
   it starts collecting once the Plausible account for the domain exists.
-- The contact form opens the visitor's email client via `mailto:`. Wire up a
-  form backend (Formspree, Netlify Forms, etc.) if you want server-side capture.
+- **Forms need a Formspree endpoint before launch.** Both the contact form
+  (`contact.html`) and the Insights subscribe form (`insights.html` and every
+  article page) post to Formspree over `fetch`, so the visitor gets an inline
+  confirmation instead of leaving the site. Create two forms at
+  [formspree.io](https://formspree.io) and replace the placeholders:
+
+  | Placeholder                 | Files                                        |
+  |-----------------------------|----------------------------------------------|
+  | `YOUR_CONTACT_FORM_ID`      | `contact.html`                               |
+  | `YOUR_SUBSCRIBE_FORM_ID`    | `insights.html`, `insights/*.html`           |
+
+  Until they are swapped, the forms show "This form isn't connected yet" rather
+  than silently dropping a submission. `js/contact-form.js` handles both, plus a
+  honeypot field and a no-JS fallback to a plain browser POST.
+
+- **Adding an Insights article:** see `assets/insights/README.md`.

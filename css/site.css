@@ -426,3 +426,26 @@ site-footer { display: block; }
   transition: opacity var(--dur-1) var(--ease);
 }
 .contact-form__submit:hover { opacity: 0.88; }
+
+/* Honeypot field — off-screen for bots, invisible and unfocusable for people. */
+.contact-form__hp {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Inline form feedback (contact + insights subscribe) */
+.form-status {
+  margin: 14px 0 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 1.2em;
+}
+.form-status:empty { margin: 0; min-height: 0; }
+.form-status[data-state="ok"] { color: var(--forest-200); font-weight: 600; }
+.form-status[data-state="error"] { color: #ffd7c9; font-weight: 600; }
+.contact-form__submit[disabled] { opacity: 0.6; cursor: progress; }
