@@ -259,110 +259,17 @@
 }
 .art__body em { font-style: italic; }
 
-/* ---------- Fact sheets (LinkedIn graphics, rebuilt as HTML) ---------- */
-.factsheet {
-  margin: 48px 0;
-  background: #fff;
-  border: 1px solid var(--ink-100);
-  border-top: 3px solid var(--forest-700);
-  border-radius: 2px;
+/* ---------- Article figures (the LinkedIn graphic exports) ---------- */
+.art-figure { margin: 44px 0; }
+.art-figure img {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--ink-100); border-radius: 2px;
   box-shadow: 0 6px 20px rgba(14,20,17,0.07);
-  overflow: hidden;
 }
-/* Break the fact sheets out past the prose measure — they carry more columns. */
-@media (min-width: 1040px) {
-  .factsheet { width: calc(100% + 150px); margin-left: -75px; }
-}
-.factsheet__head { padding: 34px 36px 0; display: block; }
-.factsheet__title {
-  font-family: var(--font-display);
-  font-size: clamp(23px, 2.8vw, 29px);
-  font-weight: 600; line-height: 1.18; letter-spacing: -0.015em;
-  color: var(--ink-900); margin: 0;
-}
-.factsheet__def {
-  font-size: 15px !important; line-height: 1.6 !important; color: var(--ink-700) !important;
-  background: var(--forest-200);
-  border-left: 3px solid var(--forest-700);
-  padding: 16px 20px; margin: 22px 0 0 !important;
-}
-.factsheet__def strong { color: var(--forest-900); font-weight: 700; }
-.factsheet__section { padding: 30px 36px 0; }
-.factsheet__sectionTitle {
-  font-family: var(--font-display); font-size: 21px; font-weight: 600;
-  color: var(--forest-700); margin: 0;
-}
-.factsheet__sectionSub {
-  font-family: var(--font-body) !important;
-  font-size: 12px !important; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase;
-  color: var(--ink-500) !important; margin: 8px 0 0 !important;
-  padding-bottom: 12px; border-bottom: 1px solid var(--forest-700);
-}
-.fs-rows { padding: 0 36px; }
-.fs-row {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
-  padding: 26px 0; border-bottom: 1px solid var(--ink-100);
-}
-.fs-row:last-child { border-bottom: none; }
-.fs-row__lead { display: flex; gap: 16px; align-items: flex-start; }
-.fs-row__icon { flex: 0 0 auto; width: 30px; height: 30px; color: var(--forest-700); margin-top: 2px; }
-.fs-row__icon svg { width: 100%; height: 100%; display: block; }
-.fs-row__title {
-  font-family: var(--font-display); font-size: 21px; font-weight: 600;
-  color: var(--forest-700); margin: 0 0 6px;
-}
-.fs-row__desc { font-size: 15px !important; line-height: 1.55 !important; color: var(--ink-700) !important; margin: 0 !important; }
-.fs-row__examplesLabel {
-  display: block; font-family: var(--font-body);
-  font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
-  color: var(--forest-700); margin-bottom: 12px;
-  padding-bottom: 8px; border-bottom: 1px solid var(--ink-100);
-}
-.fs-row__examples ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.fs-row__examples li {
-  position: relative; padding-left: 18px;
-  font-size: 15px; line-height: 1.5; color: var(--ink-700);
-}
-.fs-row__examples li::before {
-  content: "›"; position: absolute; left: 0; top: -1px;
-  color: var(--forest-400); font-weight: 700;
-}
-.factsheet__banner {
-  font-family: var(--font-display) !important;
-  font-size: clamp(18px, 2.1vw, 22px) !important; line-height: 1.4 !important;
-  font-weight: 600; color: #fff !important;
-  background: var(--forest-900);
-  margin: 26px 0 0 !important; padding: 26px 36px;
-}
-
-/* Strategy matrix */
-.factsheet--matrix .factsheet__head { padding-bottom: 8px; }
-.fs-matrix__scroll { overflow-x: auto; padding: 18px 36px 0; -webkit-overflow-scrolling: touch; }
-.fs-matrix { width: 100%; border-collapse: collapse; min-width: 680px; }
-.fs-matrix thead th {
-  text-align: left; vertical-align: bottom;
-  font-family: var(--font-body);
-  font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
-  color: var(--forest-700);
-  padding: 0 20px 12px 0; border-bottom: 2px solid var(--forest-700);
-}
-.fs-matrix tbody th, .fs-matrix tbody td {
-  text-align: left; vertical-align: top;
-  padding: 22px 20px 22px 0; border-bottom: 1px solid var(--ink-100);
-}
-.fs-matrix tbody tr:last-child th, .fs-matrix tbody tr:last-child td { border-bottom: none; }
-.fs-matrix tbody th { width: 34%; font-weight: 400; }
-.fs-matrix__num { font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--forest-400); margin-right: 4px; }
-.fs-matrix__name { font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--ink-900); letter-spacing: -0.01em; }
-.fs-matrix__desc { display: block; font-size: 14px; line-height: 1.55; color: var(--ink-500); margin-top: 8px; max-width: 42ch; }
-.fs-matrix td ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.fs-matrix td li {
-  position: relative; padding-left: 17px;
-  font-size: 14.5px; line-height: 1.5; color: var(--ink-700);
-}
-.fs-matrix td li::before {
-  content: "›"; position: absolute; left: 0; top: -1px;
-  color: var(--forest-400); font-weight: 700;
+/* The strategy matrix is a 16:9 export with three columns of small type, so
+   it is given more width than the prose measure to stay readable. */
+@media (min-width: 1060px) {
+  .art-figure--wide { width: calc(100% + 190px); margin-left: -95px; }
 }
 
 /* ---------- End-of-article author note ---------- */
@@ -381,11 +288,10 @@
   .ins-feature { grid-template-columns: 1fr; }
   .ins-feature__media { aspect-ratio: 16/9; }
   .ins-subscribe__inner { grid-template-columns: 1fr; gap: 40px; }
-  .factsheet { width: auto; margin-left: 0; }
-  .fs-row { grid-template-columns: 1fr; gap: 18px; }
 }
 
 @media (max-width: 620px) {
+  .art-figure { margin: 30px 0; }
   .ins-masthead__inner { padding-top: 56px !important; padding-bottom: 56px !important; }
   .ins-masthead__lede { font-size: 16px; }
   .ins-feature__body { padding: 28px 24px 32px; }
@@ -399,11 +305,6 @@
   .art__pull { font-size: 20px !important; padding-left: 18px; }
   .art__h2 { font-size: 24px; margin-top: 40px; }
   .art__h3 { font-size: 20px; }
-  .factsheet { margin: 34px -20px; border-left: none; border-right: none; }
-  .factsheet__head, .factsheet__section { padding-left: 20px; padding-right: 20px; }
-  .fs-rows { padding: 0 20px; }
-  .fs-matrix__scroll { padding-left: 20px; padding-right: 20px; }
-  .factsheet__banner { padding: 22px 20px; }
   .art-endnote { flex-direction: column; gap: 18px; }
   .art-endnote__actions { width: 100%; }
   .art-endnote__actions .btn { width: 100%; justify-content: center; }

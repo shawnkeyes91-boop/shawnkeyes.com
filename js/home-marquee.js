@@ -42,6 +42,7 @@
     { src: 'assets/orgs/woodworks.png', alt: 'WoodWorks', scale: 1 },
     { src: 'assets/orgs/fast-epp.webp', alt: 'Fast + Epp', scale: 1.35 },
     { src: 'assets/orgs/cwc.png', alt: 'Canadian Wood Council', scale: 1 },
+    { src: 'assets/orgs/canada-wood.png', alt: 'Canada Wood Group', scale: 1 },
     { src: 'assets/orgs/gov-bc.png', alt: 'Government of British Columbia', scale: 1 },
     { src: 'assets/orgs/bc-housing.webp', alt: 'BC Housing', scale: 1 },
     { src: 'assets/orgs/fii.svg', alt: 'Forestry Innovation Investment', scale: 1 },
@@ -61,11 +62,8 @@
           <h3 class="work-card__title">${esc(b.title)}</h3>
         </a>`)
       .join('');
-    // Desktop auto-marquee needs a duplicated track so the -50% translate loops
-    // seamlessly. Touch devices swipe through the strip manually, so a single
-    // set of cards is shown (no repeats).
-    const autoScrolls = window.matchMedia('(hover: hover)').matches;
-    workTrack.innerHTML = autoScrolls ? cards + cards : cards;
+    // The carousel is user-driven, so the list is shown once (no loop clone).
+    workTrack.innerHTML = cards;
   }
 
   const trustedTrack = document.getElementById('trusted-track');

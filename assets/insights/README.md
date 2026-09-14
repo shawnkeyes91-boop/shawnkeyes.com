@@ -5,23 +5,19 @@ no HTML changes needed.
 
 ## Current article: Switching Costs (insights/switching-costs-mmc-adoption.html)
 
-| File                          | Used for                        | Recommended size    |
-|-------------------------------|---------------------------------|---------------------|
-| `switching-costs-hero.jpg`    | Article hero + Insights card    | 2000 × 1333 (3:2)   |
+| File                          | Used for                     | Source size |
+|-------------------------------|------------------------------|-------------|
+| `switching-costs-hero.jpg`    | Article hero + Insights card | 1136 × 758  |
+| `switching-costs-fig1.png`    | "The 3 types" fact sheet     | 2160 × 2700 |
+| `switching-costs-fig2.png`    | "Five strategies" fact sheet | 3840 × 2160 |
 
-**Currently a stand-in.** `switching-costs-hero.jpg` is a copy of
-`assets/photos/p-halsa-lift.jpg`. Replace it with the LinkedIn header photo
-(the modular unit being craned) at the same path and filename.
-
-The two fact-sheet graphics from the LinkedIn post are NOT images on this site —
-they are rebuilt as live HTML in the article (`.factsheet` components in
-`css/insights.css`). That keeps them sharp on every screen, readable on a phone,
-selectable as text, and automatically on-brand. If you would rather use the
-flat image exports, drop them here and swap the `<figure>` blocks for `<img>`.
+All three are the real exports from the LinkedIn post. `fig2` is a 16:9 slide
+with three columns of small type, so the article gives it extra width
+(`.art-figure--wide` in `css/insights.css`) to keep it readable.
 
 ## Adding a new article
 
 1. Copy `insights/switching-costs-mmc-adoption.html` as a starting point.
-2. Add art here as `<slug>-hero.jpg`.
+2. Add art here as `<slug>-hero.jpg` (3:2 works best) plus any figures.
 3. Add a card to the grid in `insights.html`.
 4. Add the new URL to `sitemap.xml`.

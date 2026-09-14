@@ -165,7 +165,7 @@
           <p class="home-about__body">As a professional engineer and MBA, I combine technical depth with commercial strategy to help leaders identify new opportunities, navigate complex markets and turn innovation into profitable growth.</p>
           <div class="prior-exp">
             <span class="prior-exp__label">Prior experience</span>
-            <span class="prior-exp__roles"><span class="role-item"><strong>Vice President</strong>, Intelligent City</span><span class="role-item"><strong>Executive Director</strong>, WoodWorks BC</span><span class="role-item"><strong>Sr. Project Manager</strong>, Fast + Epp</span></span>
+            <span class="prior-exp__roles"><span class="role-item"><strong>Vice President, Strategic Growth</strong>, Intelligent City</span><span class="role-item"><strong>Executive Director</strong>, WoodWorks BC</span><span class="role-item"><strong>Sr. Project Manager</strong>, Fast + Epp</span></span>
           </div>
           <div class="stat-row">
             <div class="stat">
@@ -182,6 +182,34 @@
     </div>
   </section>
 
+  <!-- Selected work -->
+  <section id="work" class="section--cream">
+    <div class="wrap" style="padding-top:64px;padding-bottom:64px;">
+      <div class="work-head">
+        <div>
+          <span class="eyebrow">Selected work</span>
+        </div>
+        <div class="work-head__controls">
+          <div class="carousel__nav">
+            <button class="carousel__btn" type="button" data-dir="-1" aria-label="Previous projects" aria-controls="work-track">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+            </button>
+            <button class="carousel__btn" type="button" data-dir="1" aria-label="Next projects" aria-controls="work-track">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+            </button>
+          </div>
+          <a class="btn-line" href="portfolio.html">Full portfolio <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="carousel" data-carousel>
+        <div class="carousel__track" id="work-track" tabindex="0" role="region" aria-label="Selected projects, scrollable"></div>
+        <div class="carousel__edge carousel__edge--prev" data-dir="-1" aria-hidden="true"></div>
+        <div class="carousel__edge carousel__edge--next" data-dir="1" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- The difference -->
   <section id="edge" class="edge" aria-label="The difference">
     <div class="wrap" style="padding-top:68px;padding-bottom:68px;">
@@ -193,20 +221,6 @@
     </div>
   </section>
 
-  <!-- Selected work -->
-  <section id="work" class="section--cream">
-    <div class="wrap" style="padding-top:64px;padding-bottom:64px;">
-      <div class="work-head">
-        <div>
-          <span class="eyebrow">Selected work</span>
-        </div>
-        <a class="btn-line" href="portfolio.html">Full portfolio <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="marquee-mask">
-        <div class="marquee-track" id="work-track"></div>
-      </div>
-    </div>
-  </section>
 
   <!-- Trusted by -->
   <section class="trusted">
@@ -265,5 +279,6 @@
 
 <script src="js/nav-toggle.js"></script>
 <script src="js/home-marquee.js"></script>
+<script src="js/work-carousel.js"></script>
 </body>
 </html>

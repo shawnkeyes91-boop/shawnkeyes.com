@@ -321,38 +321,81 @@ h1, h2, h3 { margin: 0; }
   margin: 0; max-width: 34ch;
 }
 
-/* ---------- Selected work marquee (Home) ---------- */
-.work { }
-.work-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; margin-bottom: 36px; }
-.work-head__h2 { font-family: var(--font-display); font-size: clamp(28px, 3.6vw, 34px); font-weight: 600; line-height: 1.2; letter-spacing: -0.015em; color: var(--ink-900); margin: 16px 0 0; max-width: 26ch; }
-.marquee-mask {
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+/* ---------- Selected work carousel (Home) ---------- */
+.work-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+.work-head__controls { display: flex; align-items: center; gap: 16px; }
+.carousel__nav { display: flex; gap: 8px; }
+.carousel__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; padding: 0;
+  color: var(--forest-700); background: transparent;
+  border: 1.5px solid var(--forest-700); border-radius: 50%;
+  cursor: pointer;
+  transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease),
+              border-color var(--dur-1) var(--ease), opacity var(--dur-1) var(--ease);
 }
-/* Selected-work strip: paused by default, scrolls only while hovered, at a calm
-   pace matched to the "Trusted by" logo marquee. */
-.marquee-track { display: flex; width: max-content; gap: 24px; animation: logoMarquee 72s linear infinite; animation-play-state: paused; }
-.marquee-mask:hover .marquee-track { animation-play-state: running; }
-/* Touch devices have no hover: turn the strip into a finger-swipeable row that
-   only moves when the user scrolls it, rather than auto-animating. */
-@media (hover: none) {
-  .marquee-mask {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    scroll-padding-left: 24px;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-  .marquee-track { animation: none; }
-  .work-card { scroll-snap-align: start; }
+.carousel__btn svg { width: 19px; height: 19px; display: block; }
+.carousel__btn:hover:not(:disabled) { background: var(--forest-700); color: #fff; }
+.carousel__btn:focus-visible { outline: 2px solid var(--forest-400); outline-offset: 3px; }
+.carousel__btn:disabled { opacity: 0.28; cursor: default; border-color: var(--ink-300); color: var(--ink-300); }
+
+.carousel { position: relative; }
+.carousel__track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  /* Fade the outgoing edge, but only while there is more to see that way. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
 }
+.carousel__track::-webkit-scrollbar { display: none; }
+.carousel__track:focus-visible { outline: 2px solid var(--forest-400); outline-offset: 4px; }
+.carousel.is-start .carousel__track {
+  -webkit-mask-image: linear-gradient(90deg, #000 96%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 96%, transparent 100%);
+}
+.carousel.is-end .carousel__track {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 4%);
+}
+.carousel.is-start.is-end .carousel__track { -webkit-mask-image: none; mask-image: none; }
+.carousel__track.is-dragging { cursor: grabbing; }
+.carousel__track.is-dragging .work-card { pointer-events: none; }
+
+/* Hover strips over the outer edges of the track. Invisible until pointed at,
+   then a soft scrim and chevron say which way the row will move. */
+.carousel__edge {
+  position: absolute; top: 0; bottom: 0; width: 76px;
+  cursor: pointer; opacity: 0;
+  transition: opacity var(--dur-1) var(--ease);
+  display: flex; align-items: center;
+}
+.carousel__edge--prev { left: 0; justify-content: flex-start;
+  background: linear-gradient(90deg, var(--paper-warm) 32%, transparent); }
+.carousel__edge--next { right: 0; justify-content: flex-end;
+  background: linear-gradient(270deg, var(--paper-warm) 32%, transparent); }
+.carousel__edge::after {
+  content: ""; width: 11px; height: 11px; margin: 0 16px;
+  border-top: 2px solid var(--forest-700); border-right: 2px solid var(--forest-700);
+}
+.carousel__edge--prev::after { transform: rotate(-135deg); }
+.carousel__edge--next::after { transform: rotate(45deg); }
+.carousel:hover .carousel__edge { opacity: 0.55; }
+.carousel .carousel__edge:hover { opacity: 1; }
+.carousel.is-start .carousel__edge--prev,
+.carousel.is-end .carousel__edge--next { opacity: 0 !important; pointer-events: none; }
+/* No hover on touch: swiping is the interaction, so the strips stay out of it. */
+@media (hover: none) { .carousel__edge { display: none; } }
+
 .work-card { text-decoration: none; display: block; flex: 0 0 300px; }
 .work-card figure { margin: 0; overflow: hidden; border-radius: 2px; }
-.work-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.work-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 600ms var(--ease); }
+.work-card:hover img { transform: scale(1.04); }
 .work-card__meta { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-500); margin-top: 14px; }
 .work-card__title { color: var(--ink-900); font-size: 18px; font-family: var(--font-display); font-weight: 600; margin-top: 6px; }
+.work-card:hover .work-card__title { color: var(--forest-700); }
 
 /* ---------- Trusted by marquee ---------- */
 .trusted { background: #fff; border-top: 1px solid var(--ink-100); border-bottom: 1px solid var(--ink-100); }
@@ -585,6 +628,10 @@ h1, h2, h3 { margin: 0; }
 
 @media (max-width: 620px) {
   .svc-grid { grid-template-columns: 1fr; }
+  .work-head { gap: 18px; }
+  .work-head__controls { width: 100%; justify-content: space-between; }
+  .carousel__btn { width: 40px; height: 40px; }
+  .work-card { flex: 0 0 74%; }
   .clients { margin-top: 40px; padding-top: 28px; }
   .edge__foot { flex-direction: column; align-items: flex-start; }
   .edge__foot .btn { width: 100%; justify-content: center; }
@@ -668,6 +715,6 @@ h1, h2, h3 { margin: 0; }
   .img-hero__actions .btn { justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track, .trusted-track { animation: none; }
+  .trusted-track { animation: none; }
   .pf-more-btn .chev { animation: none; }
 }
