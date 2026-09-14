@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Keyes Advisory Insights</title>
+    <link>https://shawnkeyes.com/insights.html</link>
+    <atom:link href="https://shawnkeyes.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Analysis on the business of industrialized construction - modern methods of construction, mass timber, modular and prefab - from Shawn Keyes of Keyes Advisory.</description>
+    <language>en-ca</language>
+    <copyright>Copyright 2026 Keyes Advisory Ltd.</copyright>
+    <managingEditor>shawn@shawnkeyes.com (Shawn Keyes)</managingEditor>
+    <webMaster>shawn@shawnkeyes.com (Shawn Keyes)</webMaster>
+    <lastBuildDate>Mon, 14 Sep 2026 12:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://shawnkeyes.com/assets/og-cover.png</url>
+      <title>Keyes Advisory Insights</title>
+      <link>https://shawnkeyes.com/insights.html</link>
+    </image>
+
+    <!-- ADDING AN ARTICLE: copy one <item> block, swap the title, link, guid,
+         pubDate and description, and bump <lastBuildDate> above. Newest first. -->
+    <item>
+      <title>Switching costs: the hidden barrier to MMC adoption</title>
+      <link>https://shawnkeyes.com/insights/switching-costs-mmc-adoption.html</link>
+      <guid isPermaLink="true">https://shawnkeyes.com/insights/switching-costs-mmc-adoption.html</guid>
+      <pubDate>Sun, 13 Sep 2026 12:00:00 +0000</pubDate>
+      <author>shawn@shawnkeyes.com (Shawn Keyes)</author>
+      <category>Strategy</category>
+      <description>Why modern methods of construction stall at 7.5% of Canadian construction. Read through Hamilton Helmer's 7 Powers, the real obstacle isn't the factory price tag - it's the financial, procedural, and relational cost of doing something new, and five strategies exist to beat it.</description>
+    </item>
+  </channel>
+</rss>

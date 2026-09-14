@@ -4,3 +4,4 @@ Disallow: /preview-site.html
 Disallow: /contact-preview.html
 
 Sitemap: https://shawnkeyes.com/sitemap.xml
+Sitemap: https://shawnkeyes.com/feed.xml
