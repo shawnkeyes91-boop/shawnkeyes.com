@@ -358,23 +358,6 @@ h1, h2, h3 { margin: 0; }
 }
 .carousel__track::-webkit-scrollbar { display: none; }
 .carousel__track:focus-visible { outline: 2px solid var(--forest-400); outline-offset: 4px; }
-/* Fade whichever edge still has cards beyond it. Pointer devices only:
-   on touch the row bleeds off-screen instead, which reads better. */
-@media (hover: hover) {
-  .carousel__track {
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
-  }
-  .carousel.is-start .carousel__track {
-    -webkit-mask-image: linear-gradient(90deg, #000 96%, transparent 100%);
-    mask-image: linear-gradient(90deg, #000 96%, transparent 100%);
-  }
-  .carousel.is-end .carousel__track {
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 4%);
-  }
-  .carousel.is-start.is-end .carousel__track { -webkit-mask-image: none; mask-image: none; }
-}
 .carousel__track.is-dragging { cursor: grabbing; }
 .carousel__track.is-dragging .work-card { pointer-events: none; }
 
@@ -526,6 +509,7 @@ h1, h2, h3 { margin: 0; }
 .bio { background: var(--forest-100); border-bottom: 1px solid var(--ink-100); }
 .bio__grid { display: grid; grid-template-columns: 4fr 8fr; gap: 56px; align-items: start; padding: 72px 24px 64px; max-width: var(--max-w); margin: 0 auto; }
 .bio__aside { position: sticky; top: 88px; }
+.bio__label { margin-bottom: 16px; }
 .bio__portrait { margin: 0; }
 .bio__portrait img { border-radius: 2px; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 15%; display: block; }
 .bio__name { font-family: var(--font-display); font-size: 34px; font-weight: 600; line-height: 1.1; letter-spacing: -0.015em; color: var(--ink-900); margin: 20px 0 0; }
@@ -535,8 +519,10 @@ h1, h2, h3 { margin: 0; }
 .bio__social { display: flex; gap: 12px; margin-top: 18px; }
 .bio__social a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--forest-700); color: #fff; transition: background var(--dur-1) var(--ease); }
 .bio__social a:hover { background: var(--forest-900); }
-.bio__body p { font-size: 17px; line-height: 1.6; color: var(--ink-700); max-width: 60ch; }
-.bio__body p + p { margin-top: 16px; font-size: 16px; line-height: 1.65; }
+.bio__body p { font-size: 17px; line-height: 1.6; color: var(--ink-700); max-width: 60ch; margin: 0; }
+/* First paragraph aligns to the top of the Bio label opposite it. */
+.bio__first { font-size: 18px !important; line-height: 1.6; color: var(--ink-900) !important; }
+.bio__body p + p { margin-top: 18px; font-size: 16px; line-height: 1.65; }
 
 .career__grid { display: grid; grid-template-columns: 1fr 600px; gap: 48px; align-items: start; }
 .acc { border-top: 1px solid var(--ink-200); }
@@ -724,6 +710,7 @@ h1, h2, h3 { margin: 0; }
 
   /* About: headshot + name/credentials/links fit within the first screen */
   .bio__grid { padding-top: 40px; padding-bottom: 48px; gap: 22px; }
+  .bio__label { margin-bottom: 12px; }
   .bio__portrait img { height: 44vh; width: auto; max-width: 100%; }
   .bio__name { margin-top: 16px; }
 
