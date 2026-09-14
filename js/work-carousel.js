@@ -22,7 +22,8 @@
     if (!card) return track.clientWidth;
     const gap = parseFloat(getComputedStyle(track).columnGap || '24') || 24;
     const unit = card.getBoundingClientRect().width + gap;
-    return Math.max(unit, Math.floor(track.clientWidth / unit) * unit);
+    const perView = Math.max(1, Math.floor((track.clientWidth + gap) / unit));
+    return perView * unit;
   };
 
   const maxScroll = () => Math.max(0, track.scrollWidth - track.clientWidth);

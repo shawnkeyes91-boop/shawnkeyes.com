@@ -405,13 +405,17 @@ h1, h2, h3 { margin: 0; }
   .work-card:hover img { transform: none; }
 }
 
-.work-card { text-decoration: none; display: block; flex: 0 0 300px; }
+/* Four across at desktop widths: 4 cards + 3 × 24px gaps = 100%. */
+.work-card { text-decoration: none; display: block; flex: 0 0 calc((100% - 72px) / 4); }
 .work-card figure { margin: 0; overflow: hidden; border-radius: 2px; }
 .work-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 600ms var(--ease); }
 .work-card:hover img { transform: scale(1.04); }
 .work-card__meta { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-500); margin-top: 14px; }
 .work-card__title { color: var(--ink-900); font-size: 18px; font-family: var(--font-display); font-weight: 600; margin-top: 6px; }
 .work-card:hover .work-card__title { color: var(--forest-700); }
+
+@media (max-width: 1080px) { .work-card { flex-basis: calc((100% - 48px) / 3); } }
+@media (max-width: 840px)  { .work-card { flex-basis: calc((100% - 24px) / 2); } }
 
 /* ---------- Trusted by marquee ---------- */
 .trusted { border-bottom: 1px solid var(--ink-100); }
@@ -519,10 +523,9 @@ h1, h2, h3 { margin: 0; }
 .bio__social { display: flex; gap: 12px; margin-top: 18px; }
 .bio__social a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--forest-700); color: #fff; transition: background var(--dur-1) var(--ease); }
 .bio__social a:hover { background: var(--forest-900); }
-.bio__body p { font-size: 17px; line-height: 1.6; color: var(--ink-700); max-width: 60ch; margin: 0; }
-/* First paragraph aligns to the top of the Bio label opposite it. */
-.bio__first { font-size: 18px !important; line-height: 1.6; color: var(--ink-900) !important; }
-.bio__body p + p { margin-top: 18px; font-size: 16px; line-height: 1.65; }
+/* One size for the whole bio - no lead paragraph. */
+.bio__body p { font-size: 17px; line-height: 1.7; color: var(--ink-700); max-width: 60ch; margin: 0; }
+.bio__body p + p { margin-top: 18px; }
 
 .career__grid { display: grid; grid-template-columns: 1fr 600px; gap: 48px; align-items: start; }
 .acc { border-top: 1px solid var(--ink-200); }
@@ -650,7 +653,7 @@ h1, h2, h3 { margin: 0; }
   .work-head { gap: 18px; }
   .work-head__controls { width: 100%; justify-content: space-between; }
   .carousel__btn { width: 40px; height: 40px; }
-  .work-card { flex: 0 0 78%; }
+  .work-card { flex-basis: 78%; }
   .clients { margin-top: 40px; padding-top: 28px; }
   .edge__foot { flex-direction: column; align-items: flex-start; }
   .edge__foot .btn { width: 100%; justify-content: center; }
