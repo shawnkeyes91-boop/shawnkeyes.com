@@ -3,7 +3,7 @@
    Builds on tokens.css; chrome (nav/footer/contact) lives in site.css.
    ============================================================ */
 
-.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+.wrap { --gutter: 24px; max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
 
 /* ---------- Shared type / helpers ---------- */
 /* Eyebrow / section label — single unified spec across the site (13px). */
@@ -141,13 +141,14 @@ h1, h2, h3 { margin: 0; }
 .section-bordered { border-top: 1px solid var(--ink-100); border-bottom: 1px solid var(--ink-100); }
 
 /* ---------- Homepage section rhythm ----------
-   One alternating two-tone system from "What I do" down to "Trusted by",
-   so the middle of the page reads as a single run rather than four
-   different tints. Solid forest is kept for the Focus strip and the
+   The same two off-whites the Work page alternates, so the middle of the
+   page reads as one run and matches the rest of the site. Pure white is
+   reserved for the logo strip; solid forest for the Focus strip and the
    Contact band that bookend it. */
 .band { border-top: 1px solid var(--ink-100); }
-.band--white { background: #fff; --band-bg: #fff; }
+.band--tint  { background: var(--forest-100); --band-bg: var(--forest-100); }
 .band--cream { background: var(--paper-warm); --band-bg: var(--paper-warm); }
+.band--white { background: #fff; --band-bg: #fff; }
 
 /* ---------- Home hero (full-bleed shares .img-hero) ---------- */
 .home-hero__lede { max-width: 52ch; }
@@ -250,10 +251,10 @@ h1, h2, h3 { margin: 0; }
   flex-direction: column;
   text-decoration: none;
   background: #fff;
-  border: 1px solid var(--ink-200);
+  border: 1px solid var(--ink-100);
   border-top: 3px solid var(--forest-700);
   border-radius: 2px;
-  box-shadow: 0 4px 14px rgba(14,20,17,0.07), 0 1px 2px rgba(14,20,17,0.04);
+  box-shadow: 0 4px 12px rgba(14,20,17,0.06), 0 1px 2px rgba(14,20,17,0.04);
   padding: 26px 22px;
   transition: box-shadow 260ms var(--ease), transform 260ms var(--ease);
 }
@@ -354,21 +355,26 @@ h1, h2, h3 { margin: 0; }
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
-  /* Fade the outgoing edge, but only while there is more to see that way. */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
 }
 .carousel__track::-webkit-scrollbar { display: none; }
 .carousel__track:focus-visible { outline: 2px solid var(--forest-400); outline-offset: 4px; }
-.carousel.is-start .carousel__track {
-  -webkit-mask-image: linear-gradient(90deg, #000 96%, transparent 100%);
-  mask-image: linear-gradient(90deg, #000 96%, transparent 100%);
+/* Fade whichever edge still has cards beyond it. Pointer devices only:
+   on touch the row bleeds off-screen instead, which reads better. */
+@media (hover: hover) {
+  .carousel__track {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+  }
+  .carousel.is-start .carousel__track {
+    -webkit-mask-image: linear-gradient(90deg, #000 96%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 96%, transparent 100%);
+  }
+  .carousel.is-end .carousel__track {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 4%);
+  }
+  .carousel.is-start.is-end .carousel__track { -webkit-mask-image: none; mask-image: none; }
 }
-.carousel.is-end .carousel__track {
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 4%);
-}
-.carousel.is-start.is-end .carousel__track { -webkit-mask-image: none; mask-image: none; }
 .carousel__track.is-dragging { cursor: grabbing; }
 .carousel__track.is-dragging .work-card { pointer-events: none; }
 
@@ -395,7 +401,26 @@ h1, h2, h3 { margin: 0; }
 .carousel.is-start .carousel__edge--prev,
 .carousel.is-end .carousel__edge--next { opacity: 0 !important; pointer-events: none; }
 /* No hover on touch: swiping is the interaction, so the strips stay out of it. */
-@media (hover: none) { .carousel__edge { display: none; } }
+/* Touch: the thumb is the control. Arrows and edge strips are pointer
+   affordances, so they go; native momentum scrolling plus mandatory snap
+   takes over, which is the standard behaviour for a mobile card row. The
+   track bleeds past the page gutter so a slice of the next card is always
+   visible, which is what tells someone the row scrolls at all. */
+@media (hover: none) {
+  .carousel__edge,
+  .carousel__nav { display: none; }
+  .carousel__track {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    margin-inline: calc(-1 * var(--gutter, 24px));
+    padding-inline: var(--gutter, 24px);
+    scroll-padding-inline: var(--gutter, 24px);
+  }
+  .work-card { scroll-snap-align: start; }
+  /* No hover on touch, so the image zoom would stick after a tap. */
+  .work-card:hover img { transform: none; }
+}
 
 .work-card { text-decoration: none; display: block; flex: 0 0 300px; }
 .work-card figure { margin: 0; overflow: hidden; border-radius: 2px; }
@@ -639,14 +664,14 @@ h1, h2, h3 { margin: 0; }
   .work-head { gap: 18px; }
   .work-head__controls { width: 100%; justify-content: space-between; }
   .carousel__btn { width: 40px; height: 40px; }
-  .work-card { flex: 0 0 74%; }
+  .work-card { flex: 0 0 78%; }
   .clients { margin-top: 40px; padding-top: 28px; }
   .edge__foot { flex-direction: column; align-items: flex-start; }
   .edge__foot .btn { width: 100%; justify-content: center; }
 
   /* --- Compact mobile type scale (elements read smaller) --- */
   .site-nav[data-logo-size="large"] { --nav-logo-h: 42px; }
-  .wrap { padding-left: 20px; padding-right: 20px; padding-top: 48px !important; padding-bottom: 48px !important; }
+  .wrap { --gutter: 20px; padding-top: 48px !important; padding-bottom: 48px !important; }
   .home-about__h3, .svc-head__h2, .work-head__h2, .pf-section__h2, .media__h2 { font-size: 24px; }
   .edge__h2, .expertise__h2 { font-size: 26px; }
   .expertise__lede { font-size: 16px; }
