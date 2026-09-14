@@ -140,6 +140,15 @@ h1, h2, h3 { margin: 0; }
 .section--band { background: var(--forest-100); }
 .section-bordered { border-top: 1px solid var(--ink-100); border-bottom: 1px solid var(--ink-100); }
 
+/* ---------- Homepage section rhythm ----------
+   One alternating two-tone system from "What I do" down to "Trusted by",
+   so the middle of the page reads as a single run rather than four
+   different tints. Solid forest is kept for the Focus strip and the
+   Contact band that bookend it. */
+.band { border-top: 1px solid var(--ink-100); }
+.band--white { background: #fff; --band-bg: #fff; }
+.band--cream { background: var(--paper-warm); --band-bg: var(--paper-warm); }
+
 /* ---------- Home hero (full-bleed shares .img-hero) ---------- */
 .home-hero__lede { max-width: 52ch; }
 
@@ -180,7 +189,7 @@ h1, h2, h3 { margin: 0; }
 .focus__item + .focus__item { border-left: 1px solid rgba(255,255,255,0.32); }
 
 /* ---------- Home About (editorial classic) ---------- */
-.home-about { background: #fff; }
+.home-about { }
 .home-about__grid {
   display: grid;
   grid-template-columns: 4fr 8fr;
@@ -225,7 +234,7 @@ h1, h2, h3 { margin: 0; }
 .link-underline:hover { border-bottom-color: var(--forest-700); gap: 12px; color: var(--forest-700); }
 
 /* ---------- Services teaser (Home) + service cards ---------- */
-.svc-teaser { background: var(--forest-100); }
+.svc-teaser { }
 .svc-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; margin-bottom: 32px; }
 .svc-head__h2 { font-family: var(--font-display); font-size: clamp(23px, 2.7vw, 30px); font-weight: 600; line-height: 1.3; letter-spacing: -0.015em; color: var(--ink-900); margin: 14px 0 0; max-width: 62ch; text-wrap: balance; }
 .svc-head__h2 .accent, .accent-forest { color: var(--forest-700); }
@@ -241,10 +250,10 @@ h1, h2, h3 { margin: 0; }
   flex-direction: column;
   text-decoration: none;
   background: #fff;
-  border: 1px solid var(--ink-100);
+  border: 1px solid var(--ink-200);
   border-top: 3px solid var(--forest-700);
   border-radius: 2px;
-  box-shadow: 0 4px 12px rgba(14,20,17,0.06), 0 1px 2px rgba(14,20,17,0.04);
+  box-shadow: 0 4px 14px rgba(14,20,17,0.07), 0 1px 2px rgba(14,20,17,0.04);
   padding: 26px 22px;
   transition: box-shadow 260ms var(--ease), transform 260ms var(--ease);
 }
@@ -271,31 +280,30 @@ h1, h2, h3 { margin: 0; }
 .clients { margin-top: 52px; padding-top: 30px; border-top: 1px solid var(--ink-200); }
 .clients__list {
   list-style: none; margin: 18px 0 0; padding: 0;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  display: flex; flex-wrap: wrap; gap: 10px 0;
 }
 .clients__list li {
-  position: relative;
   font-family: var(--font-display);
   font-size: 19px; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em;
   color: var(--ink-900);
-  padding: 4px 28px 4px 0;
+  padding: 2px 0;
 }
-.clients__list li + li { padding-left: 28px; border-left: 1px solid var(--ink-200); }
+.clients__list li + li { margin-left: 28px; padding-left: 28px; border-left: 1px solid var(--ink-200); }
 
 /* ---------- The edge (Home) ---------- */
-.edge { background: var(--forest-700); }
+.edge { }
 .eyebrow--onDark { color: var(--forest-300); }
 .edge__head { max-width: 940px; }
 .edge__h2 {
   font-family: var(--font-display);
   font-size: clamp(27px, 3.6vw, 39px);
   font-weight: 600; line-height: 1.14; letter-spacing: -0.02em;
-  color: #fff; margin: 18px 0 0;
+  color: var(--ink-900); margin: 18px 0 0;
 }
-.edge__h2 .accent { color: var(--forest-300); }
+.edge__h2 .accent { color: var(--forest-700); }
 .edge__lede {
   font-size: 19px; line-height: 1.65;
-  color: rgba(255,255,255,0.86);
+  color: var(--ink-700);
   margin: 26px 0 0; max-width: 66ch;
 }
 .edge__grid {
@@ -373,9 +381,9 @@ h1, h2, h3 { margin: 0; }
   display: flex; align-items: center;
 }
 .carousel__edge--prev { left: 0; justify-content: flex-start;
-  background: linear-gradient(90deg, var(--paper-warm) 32%, transparent); }
+  background: linear-gradient(90deg, var(--band-bg, #fff) 32%, transparent); }
 .carousel__edge--next { right: 0; justify-content: flex-end;
-  background: linear-gradient(270deg, var(--paper-warm) 32%, transparent); }
+  background: linear-gradient(270deg, var(--band-bg, #fff) 32%, transparent); }
 .carousel__edge::after {
   content: ""; width: 11px; height: 11px; margin: 0 16px;
   border-top: 2px solid var(--forest-700); border-right: 2px solid var(--forest-700);
@@ -398,7 +406,7 @@ h1, h2, h3 { margin: 0; }
 .work-card:hover .work-card__title { color: var(--forest-700); }
 
 /* ---------- Trusted by marquee ---------- */
-.trusted { background: #fff; border-top: 1px solid var(--ink-100); border-bottom: 1px solid var(--ink-100); }
+.trusted { border-bottom: 1px solid var(--ink-100); }
 .trusted__label { text-align: center; font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-500); margin-bottom: 36px; }
 .trusted-mask {
   overflow: hidden;
@@ -618,8 +626,8 @@ h1, h2, h3 { margin: 0; }
   .expertise__grid { grid-template-columns: 1fr; }
   .exp-card:nth-child(odd) { border-right: none; padding-right: 0; }
   .exp-card:nth-child(even) { padding-left: 0; }
-  .clients__list { grid-template-columns: 1fr; }
-  .clients__list li + li { padding-left: 0; border-left: none; border-top: 1px solid var(--ink-200); margin-top: 4px; padding-top: 12px; }
+  .clients__list { flex-direction: column; gap: 0; }
+  .clients__list li + li { margin-left: 0; padding-left: 0; border-left: none; border-top: 1px solid var(--ink-200); margin-top: 10px; padding-top: 10px; }
   .edge__grid { grid-template-columns: 1fr; gap: 32px; }
 
   .link-underline--dsk, .btn-line--dsk { display: none; }
