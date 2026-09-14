@@ -178,7 +178,8 @@
 /* ============================================================
    Article page
    ============================================================ */
-.art-head { background: var(--forest-900); }
+/* Same lighter green as the Contact band that closes every page. */
+.art-head { background: var(--forest-700); }
 .art-head__inner { padding-top: 40px !important; padding-bottom: 52px !important; max-width: 900px; }
 .art-back {
   display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px;
