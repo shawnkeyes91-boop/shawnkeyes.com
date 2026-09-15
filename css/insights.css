@@ -109,7 +109,7 @@
 .ins-card:not(.ins-card--placeholder):hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(14,20,17,0.12); }
 .ins-card__link { display: flex; flex-direction: column; text-decoration: none; width: 100%; }
 .ins-card__media { margin: 0; overflow: hidden; background: var(--forest-900); }
-.ins-card__media img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: transform 620ms var(--ease); }
+.ins-card__media img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; display: block; transition: transform 620ms var(--ease); }
 .ins-card:hover .ins-card__media img { transform: scale(1.05); }
 .ins-card__body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1 1 auto; }
 .ins-card__title {
